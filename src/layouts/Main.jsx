@@ -3,18 +3,18 @@ import Navbar from "../components/shared/Navbar/Navbar";
 import Footer from "../components/shared/Footer/Footer";
 
 const Main = () => {
-    return (
-        <>
+    return ( 
+        <div className="container mx-auto">
             <div>
                 <Navbar></Navbar>
             </div>
-            <div>
+            <div className="my-20">
                 <Outlet></Outlet>
             </div>
             <div>
                 <Footer></Footer>
             </div>
-        </>
+        </div>
     );
 };
 
