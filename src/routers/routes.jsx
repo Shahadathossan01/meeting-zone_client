@@ -1,7 +1,9 @@
 
 import Main from "../layouts/Main";
+import BookingForm from "../pages/BookingForm/BookingForm";
 import BookingList from "../pages/BookingList/BookingList";
 import Login from "../pages/Login/Login";
+import MeetingZoneDetails from "../pages/MeetingZoneDetails/MeetingZoneDetails";
 import MeetingZones from "../pages/MeetingZones/MeetingZones";
 import Register from "../pages/Register/Register";
 
@@ -25,6 +27,14 @@ const routes=[
             {
                 path:'/bookingList',
                 element:<BookingList></BookingList>
+            },
+            {
+                path:'/meetingZoneDetails/:id',
+                element:<MeetingZoneDetails></MeetingZoneDetails>
+            },
+            {
+                path:'/BookingForm',
+                element:<BookingForm></BookingForm>
             }
         ]
     }

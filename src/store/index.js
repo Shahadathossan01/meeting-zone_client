@@ -55,12 +55,23 @@ const userModel={
 }
 const meetingZoneModel={
     items:[],
+    item:[],
     addItems:action((state,payload)=>{
         state.items=payload
+    }),
+    addItem:action((state,payload)=>{
+        state.item=payload
     }),
     getMeetingZones:thunk(async(actions)=>{
         const {data}=await axios.get('http://localhost:3000/meetingPoint')
         actions.addItems(data)
+    }),
+    getMeetingZoneById:thunk(async(actions,payload)=>{
+        const {data}=await axios.get(`http://localhost:3000/meetingPointById/${payload}`)
+        actions.addItem(data)
+    }),
+    bookingConfirm:thunk(async(actions,payload)=>{
+        console.log(payload)
     })
 }
 
