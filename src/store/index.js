@@ -53,10 +53,20 @@ const userModel={
         state.user=null
     })
 }
-
+const meetingZoneModel={
+    items:[],
+    addItems:action((state,payload)=>{
+        state.items=payload
+    }),
+    getMeetingZones:thunk(async(actions)=>{
+        const {data}=await axios.get('http://localhost:3000/meetingPoint')
+        actions.addItems(data)
+    })
+}
 
 const store=createStore({
-    user:userModel
+    user:userModel,
+    meetingZone:meetingZoneModel
 })
 
 export default store;
