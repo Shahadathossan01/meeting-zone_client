@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import {useStoreActions, useStoreState } from 'easy-peasy'
 
 const navigation = [
   { name: 'Home', route: '/' },
@@ -14,6 +15,8 @@ const navigation = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const {user}=useStoreState(store=>store.user)
+  const {logoutUser}=useStoreActions(action=>action.user)
 
   return (
     <div className="bg-white">
@@ -45,12 +48,21 @@ export default function Navbar() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            {
+              user&&<h2 className="text-sm/6 font-semibold text-gray-900 me-20">
+              Email: <span aria-hidden="true">{user?.email}</span>
+            </h2>
+            }
+          
+            {
+              user?<Link onClick={()=>logoutUser()} to="/login" className="text-sm/6 font-semibold text-gray-900">
+              Logout
+            </Link>:
             <Link to="/login" className="text-sm/6 font-semibold text-gray-900">
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>
-            {/* <Link to="/login" className="text-sm/6 font-semibold text-gray-900">
-              Logout
-            </Link> */}
+            }
+
           </div>
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -81,12 +93,21 @@ export default function Navbar() {
                   ))}
                 </div>
                 <div className="py-6">
-                <Link to="/login" className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
-              Log in
-            </Link>
-            {/* <Link to="/login" className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                {
+              user&&<h2 className="text-sm/6 font-semibold text-gray-900 me-20">
+              Email: <span aria-hidden="true">{user?.email}</span>
+            </h2>
+            }
+          
+            {
+              user?<Link onClick={()=>logoutUser()} to="/login" className="text-sm/6 font-semibold text-gray-900">
               Logout
-            </Link> */}
+            </Link>:
+            <Link to="/login" className="text-sm/6 font-semibold text-gray-900">
+              Log in <span aria-hidden="true">&rarr;</span>
+            </Link>
+            }
+
                 </div>
               </div>
             </div>
