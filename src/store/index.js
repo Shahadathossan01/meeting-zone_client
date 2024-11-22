@@ -77,7 +77,8 @@ const meetingZoneModel={
 const sslCommerzModel={
     initiatePayment:thunk(async(actions,payload)=>{
         const {username,meetupType,date,shift,members,duration}=payload.data
-        const {itemLocation}=payload
+        const {itemLocation,userId}=payload
+        const status='unpayed'
         const {data}=await axios.post('http://localhost:3000/initiate-payment',{
             username,
             meetupType,
@@ -85,9 +86,10 @@ const sslCommerzModel={
             shift,
             members,
             duration,
-            itemLocation
+            itemLocation,
+            status,
+            userId
         })
-        console.log(data)
         window.location.href=data
     })
 }

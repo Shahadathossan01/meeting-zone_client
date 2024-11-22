@@ -1,16 +1,18 @@
 
-import { useStoreActions } from "easy-peasy";
+import { useStoreActions, useStoreState } from "easy-peasy";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 
 const BookingForm = () => {
     const {initiatePayment}=useStoreActions(action=>action.ssl)
     const location=useLocation()
+    const {user}=useStoreState(state=>state.user)
+    const userId=user.id
     const {location:itemLocation}=location.state
     const {register,handleSubmit,watch}=useForm()
     const duration=watch('duration')
     const onSubmit=(data)=>{
-      initiatePayment({data,itemLocation})
+      initiatePayment({data,itemLocation,userId})
     }
 
     return (
