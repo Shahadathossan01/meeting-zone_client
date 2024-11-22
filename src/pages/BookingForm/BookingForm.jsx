@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 
 const BookingForm = () => {
-    const {bookingConfirm}=useStoreActions(action=>action.meetingZone)
+    const {initiatePayment}=useStoreActions(action=>action.ssl)
     const location=useLocation()
     const {location:itemLocation}=location.state
     const {register,handleSubmit,watch}=useForm()
     const duration=watch('duration')
     const onSubmit=(data)=>{
-        bookingConfirm({data,itemLocation})
+      initiatePayment({data,itemLocation})
     }
 
     return (

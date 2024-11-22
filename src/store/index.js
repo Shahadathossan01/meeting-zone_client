@@ -74,10 +74,27 @@ const meetingZoneModel={
         console.log(payload)
     })
 }
-
+const sslCommerzModel={
+    initiatePayment:thunk(async(actions,payload)=>{
+        const {username,meetupType,date,shift,members,duration}=payload.data
+        const {itemLocation}=payload
+        const {data}=await axios.post('http://localhost:3000/initiate-payment',{
+            username,
+            meetupType,
+            date,
+            shift,
+            members,
+            duration,
+            itemLocation
+        })
+        console.log(data)
+        window.location.href=data
+    })
+}
 const store=createStore({
     user:userModel,
-    meetingZone:meetingZoneModel
+    meetingZone:meetingZoneModel,
+    ssl:sslCommerzModel
 })
 
 export default store;

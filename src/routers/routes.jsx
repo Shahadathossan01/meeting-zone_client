@@ -2,10 +2,13 @@
 import Main from "../layouts/Main";
 import BookingForm from "../pages/BookingForm/BookingForm";
 import BookingList from "../pages/BookingList/BookingList";
+import Cancel from "../pages/Cancel/Cancel";
+import Fail from "../pages/Fail/Fail";
 import Login from "../pages/Login/Login";
 import MeetingZoneDetails from "../pages/MeetingZoneDetails/MeetingZoneDetails";
 import MeetingZones from "../pages/MeetingZones/MeetingZones";
 import Register from "../pages/Register/Register";
+import Success from "../pages/Success/Success";
 
 const routes=[
     {
@@ -35,6 +38,18 @@ const routes=[
             {
                 path:'/BookingForm',
                 element:<BookingForm></BookingForm>
+            },
+            {
+                path:'/success',
+                element:<Success></Success>
+            },
+            {
+                path:'/cancel',
+                element:<Cancel></Cancel>
+            },
+            {
+                path:'/fail',
+                element:<Fail></Fail>
             }
         ]
     }
