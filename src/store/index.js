@@ -93,10 +93,30 @@ const sslCommerzModel={
         window.location.href=data
     })
 }
+const bookingListModel={
+    items:[],
+    deleteItem:null,
+    addItems:action((state,payload)=>{
+        state.items=payload;
+    }),
+    addDelteItem:action((state,payload)=>{
+        state.deleteItem=payload
+    }),
+    getBookingList:thunk(async(actions,payload)=>{
+        const {data}=await axios.get(`http://localhost:3000/userBooking/${payload}`)
+        actions.addItems(data)
+    }),
+    deleteBookingList:thunk(async(actions,payload)=>{
+        const {data}=await axios.delete(`http://localhost:3000/bookingList/${payload}`)
+        actions.addDelteItem(data)
+    })
+
+}
 const store=createStore({
     user:userModel,
     meetingZone:meetingZoneModel,
-    ssl:sslCommerzModel
+    ssl:sslCommerzModel,
+    bookingList:bookingListModel
 })
 
 export default store;
