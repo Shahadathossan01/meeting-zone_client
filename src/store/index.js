@@ -1,5 +1,6 @@
 import axios from "axios";
 import { action, createStore, thunk } from "easy-peasy";
+import { replace, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 const userModel={
@@ -38,7 +39,8 @@ const userModel={
         }
     }),
     loginUser:thunk(async(actions,payload)=>{
-        const {email,password}=payload
+        const {email,password}=payload.data
+        const {navigate,from}=payload
         const {data}=await axios.post('http://localhost:3000/login',{
             email,
             password
@@ -46,6 +48,7 @@ const userModel={
         localStorage.setItem("token",data.token)
         localStorage.setItem("user",JSON.stringify(data.user))
         actions.setUser(data.user)
+        navigate(from,{replace:true})
     }),
     logoutUser:action(state=>{
         localStorage.removeItem("token")

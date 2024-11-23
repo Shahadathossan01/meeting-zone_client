@@ -9,6 +9,7 @@ import MeetingZoneDetails from "../pages/MeetingZoneDetails/MeetingZoneDetails";
 import MeetingZones from "../pages/MeetingZones/MeetingZones";
 import Register from "../pages/Register/Register";
 import Success from "../pages/Success/Success";
+import PrivateRoute from "../privateRoute/PrivateRoute";
 
 const routes=[
     {
@@ -29,7 +30,7 @@ const routes=[
             },
             {
                 path:'/bookingList',
-                element:<BookingList></BookingList>
+                element:<PrivateRoute><BookingList></BookingList></PrivateRoute>
             },
             {
                 path:'/meetingZoneDetails/:id',
