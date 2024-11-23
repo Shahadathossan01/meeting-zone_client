@@ -1,16 +1,19 @@
 import { useStoreActions, useStoreState } from "easy-peasy";
 import { useEffect } from "react";
+import { usePDF } from "react-to-pdf";
 
 const BookingListItem = ({item}) => {
+    const {toPDF,targetRef}=usePDF({filename:'page.pdf'})
     const {deleteBookingList}=useStoreActions(action=>action.bookingList)
     const {username,shift,members,meetupType,itemLocation,duration,date,status}=item
     return (
         <>
             <div className="flex justify-between">
                 <h1>Upcomming</h1>
+                <button onClick={()=>toPDF()}>Print</button>
                 <button onClick={()=>deleteBookingList(item._id)}>X</button>
             </div>
-            <div className="flex justify-between">
+            <div ref={targetRef} className="flex justify-between py-10 px-10">
                 <div>
                     <h1>Name: {username}</h1>
                     <h1>Location: {itemLocation}</h1>
@@ -22,7 +25,6 @@ const BookingListItem = ({item}) => {
                 <div>
                     <h1>Date: {date}</h1>
                     <h1>Status: {status}</h1>
-                    <button className="mt-16">Print</button>
                 </div>
             </div>
         </>
