@@ -19,8 +19,8 @@ export default function Navbar() {
   const {logoutUser}=useStoreActions(action=>action.user)
 
   return (
-    <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50">
+    <div>
+      <header className="absolute inset-x-0 top-0 z-50 bg-gray-800 text-white">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <Link to="/">
@@ -33,7 +33,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
             >
               <span className="sr-only">Open main menu</span>
               <Bars3Icon aria-hidden="true" className="size-6" />
@@ -42,23 +42,23 @@ export default function Navbar() {
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
                 
-              <Link key={item.name} to={item.route} className="text-sm/6 font-semibold text-gray-900">
+              <Link key={item.name} to={item.route} className="text-sm/6 font-semibold text-white">
                 {item.name}
               </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             {
-              user&&<h2 className="text-sm/6 font-semibold text-gray-900 me-20">
+              user&&<h2 className="text-sm/6 font-semibold me-20">
               Email: <span aria-hidden="true">{user?.email}</span>
             </h2>
             }
           
             {
-              user?<Link onClick={()=>logoutUser()} to="/login" className="text-sm/6 font-semibold text-gray-900">
-              Logout
+              user?<Link onClick={()=>logoutUser()} to="/login" className="text-sm/6 font-semibold ">
+              Logout <span aria-hidden="true">&rarr;</span>
             </Link>:
-            <Link to="/login" className="text-sm/6 font-semibold text-gray-900">
+            <Link to="/login" className="text-sm/6 font-semibold">
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>
             }
@@ -101,7 +101,7 @@ export default function Navbar() {
           
             {
               user?<Link onClick={()=>logoutUser()} to="/login" className="text-sm/6 font-semibold text-gray-900">
-              Logout
+              Logout <span aria-hidden="true">&rarr;</span>
             </Link>:
             <Link to="/login" className="text-sm/6 font-semibold text-gray-900">
               Log in <span aria-hidden="true">&rarr;</span>

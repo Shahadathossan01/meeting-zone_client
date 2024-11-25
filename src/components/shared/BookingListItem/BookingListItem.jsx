@@ -12,7 +12,6 @@ const BookingListItem = ({item}) => {
     const today=isSameDay(dataDate,localDate)
     const nextDay=!today && isAfter(dataDate,localDate)
     const prevDay=!today && isBefore(dataDate,localDate)
-    console.log(prevDay)
     return (
         <>
             <div className="flex justify-between">
