@@ -12,7 +12,7 @@ const MeetingZones = () => {
         <>
             <h3 className="flex justify-center pt-6 font-serif hover:font-mono text-2xl">The capital city of Dhaka</h3>
             <h1 className="pt-4 underline underline-offset-8 pb-6 text-lg font-sans">Chose your meeting zone</h1>
-            <div className="flex gap-4 flex-wrap border">
+            <div className="flex gap-2 flex-wrap bg-orange-100 p-4 justify-center">
                 {
                     items.map((item=>(
                         <Zone key={item._id} item={item}></Zone>
