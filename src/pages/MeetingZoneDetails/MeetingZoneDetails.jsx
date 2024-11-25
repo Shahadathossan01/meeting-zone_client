@@ -16,23 +16,24 @@ const MeetingZoneDetails = () => {
     const img1="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhpnzGteNaPWl5jk5OFfpEr3YveToyipdCvw&s"
     return (
         <>
-            <h1>{item?.name}</h1>
-            <h3>{item?.location}</h3>
-            <h2>{item?.details}</h2>
-            <div className="grid grid-cols-3">
-                <div>
-                    <iframe src={mapUrl} width="600" height="450"  allowfullscreen="" loading="lazy" className="border-4 w-full" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div className="px-2">
+            <h1 className="text-center font-bold pt-10 text-xl tracking-wide">{item?.name}</h1>
+            <h3 className="text-center">{item?.location}</h3>
+            <h2 className="pt-4">{item?.details}</h2>
+            </div>
+            <div className="grid lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 grid-cols-1 xl:grid-cols-3 2xl:grid-cols-3  pt-4 gap-2">
+                <div className="p-2 flex justify-center">
+                    <iframe src={mapUrl} loading="lazy" className="border-4 flex w-full" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div className="border col-span-2">
-                    <h1>footage</h1>
+                <div className="col-span-2 p-2 flex flex-wrap gap-2 justify-center">
                     <img src={img1} alt="" />
                     <img src={img1} alt="" />
                     <img src={img1} alt="" />
-                    
+                    <img src={img1} alt="" />
                 </div>
             </div>
-            <div>
-                <Link to="/bookingForm" state={{location:item.location}}><button>Book Now</button></Link>
+            <div className="flex justify-center mt-4">
+                <Link to="/bookingForm" state={{location:item.location}}><button className="bg-green-800 px-2 rounded hover:bg-green-500 mt-1 font-bold text-white p-2">Book Now</button></Link>
             </div>
         </>
     );
