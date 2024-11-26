@@ -14,29 +14,35 @@ const Register = () => {
     console.log(registerData)
     return (
         <>
-            <h1 className="flex justify-center">Register Now</h1>
+           <div className="bg-orange-100 border-4">
+            <h1 className="flex justify-center text-center pt-6 font-serif hover:font-mono text-2xl">Register Now</h1>
+            <div className="flex justify-center">
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <label htmlFor="username">Username</label><br />
-                    <input {...register("username")} className="border-2" placeholder="enter you username" type="text" name="username" id="username" />
+                <div className="pt-4">
+                    <label className="text-lg font-bold" htmlFor="username">Username:</label><br />
+                    <input required {...register("username")} className="border-2 px-2" placeholder="Enter you username" type="text" name="username" id="username" />
                 </div>
-                <div>
-                    <label htmlFor="email">Email</label><br />
-                    <input required {...register("email")} className="border-2" placeholder="enter you email" type="email" name="email" id="email" />
+                <div className="pt-4">
+                    <label className="text-lg font-bold" htmlFor="email">Email</label><br />
+                    <input required {...register("email")} className="border-2 px-2" placeholder="Enter you email" type="email" name="email" id="email" />
                 </div>
                 {
-                    isRegisterd==false && <span>User already exists</span>
+                    isRegisterd==false && <span className="text-orange-600">User already exists</span>
                 }
                 
-                <div>
-                    <label htmlFor="password">Password</label><br />
-                    <input {...register("password")} className="border-2" placeholder="enter you password" type="password" name="password" id="password" />
+                <div className="pt-4">
+                    <label className="text-lg font-bold" htmlFor="password">Password</label><br />
+                    <input required {...register("password")} className="border-2 px-2" placeholder="Enter you password" type="password" name="password" id="password" />
                 </div>
-                <button>Register</button>
+                <div className="flex justify-center">
+                <button className="bg-green-800 px-2 rounded hover:bg-green-500 mt-4  font-bold text-white py-1">Register</button>
+                </div>
             </form>
-            <div>
-                <h1>Already have an account. <span>please <Link to="/login">Login</Link></span></h1>
             </div>
+            <div className="flex justify-center mb-4">
+                <h1>Already have an account. please <span className="text-lg text-blue-700"><Link  to="/login">Login</Link></span></h1>
+            </div>
+           </div>
         </>
     );
 };
