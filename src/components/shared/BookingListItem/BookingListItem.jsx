@@ -14,8 +14,20 @@ const BookingListItem = ({item}) => {
     const prevDay=!today && isBefore(dataDate,localDate)
     return (
         <div className="flex justify-center">
-            <div className="flex gap-20 mt-4  p-4 w-1/2 border bg-red-50">
-                <div ref={targetRef} className="w-64 py-4 px-2">
+            <div className="flex gap-20 mt-2  p-2 w-1/2 border bg-red-50 justify-center">
+                <div  className="w-50 py-4 px-2">
+                <div className="flex justify-center">
+                    {
+                        today&& <button className="bg-green-800 px-2 rounded mt-1 font-bold text-white p-2">Running</button>
+                    }
+                    {
+                        nextDay && <button className="bg-blue-500 px-2 rounded mt-1 font-bold text-white p-2">Upcomming</button>
+                    }
+                    {
+                        prevDay && <button className="bg-gray-800 px-2 rounded mt-1 font-bold text-white p-2">End Event</button>
+                    }
+                    </div>
+                    <div ref={targetRef}>
                     <h1><span className="text-lg font-bold">Username:</span> {username}</h1>
                     <h1><span className="text-lg font-bold">Location:</span> {itemLocation}</h1>
                     <h1><span className="text-lg font-bold">Meetup Type:</span> {meetupType}</h1>
@@ -30,28 +42,13 @@ const BookingListItem = ({item}) => {
                         :
                         <span className="bg-gray-300 px-2 pt-0 pb-1 rounded mt-1 font-bold text-white">{status}</span>}
                     </h1>
-                </div>
-                <div className="p-4">
-                    <div>
+                    </div>
+                    <div className="flex justify-between">
                         {
                             <button className="bg-red-800 px-2 rounded hover:bg-red-500 mt-1 font-bold text-white p-2" onClick={()=>deleteBookingList(item._id)}>X</button>
                         }
+                        <button className="bg-gray-500 px-2 rounded mt-1 font-bold text-white p-2 t-4 hover:bg-gray-800" onClick={()=>toPDF()}>Print</button>
                     </div>
-                    <div className="mt-4">
-                    {
-                        today&& <button className="bg-green-800 px-2 rounded mt-1 font-bold text-white p-2">Running</button>
-                    }
-                    {
-                        nextDay && <button className="bg-blue-500 px-2 rounded mt-1 font-bold text-white p-2">Upcomming</button>
-                    }
-                    {
-                        prevDay && <button className="bg-gray-800 px-2 rounded mt-1 font-bold text-white p-2">End Event</button>
-                    }
-                    </div>
-                    <div className="mt-4">
-                        <button className="bg-gray-500 px-2 rounded mt-1 font-bold text-white p-2 t-4" onClick={()=>toPDF()}>Print</button>
-                    </div>
-                
                 </div>
             </div>
         </div>
