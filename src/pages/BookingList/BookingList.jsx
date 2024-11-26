@@ -14,12 +14,12 @@ const BookingList = () => {
 
     return (
         <>
-            {
+                {
     
-                items.map((item)=>(
-                    <BookingListItem key={item._id} item={item}></BookingListItem>
-                ))
-            }
+                    items.map((item)=>(
+                        <BookingListItem key={item._id} item={item}></BookingListItem>
+                    ))
+                }
         </>
     );
 };
