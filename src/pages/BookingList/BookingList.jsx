@@ -7,7 +7,6 @@ const BookingList = () => {
     const {getBookingList}=useStoreActions(action=>action.bookingList)
     const {items,deleteItem}=useStoreState(state=>state.bookingList)
     const userId=user.id
-    console.log(items)
     useEffect(()=>{
         getBookingList(userId)
     },[getBookingList,userId,deleteItem])

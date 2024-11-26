@@ -44,10 +44,8 @@ const BookingListItem = ({item}) => {
                     </h1>
                     </div>
                     <div className="flex justify-between">
-                        {
-                            <button className="bg-red-800 px-2 rounded hover:bg-red-500 mt-1 font-bold text-white p-2" onClick={()=>deleteBookingList(item._id)}>X</button>
-                        }
-                        <button className="bg-gray-500 px-2 rounded mt-1 font-bold text-white p-2 t-4 hover:bg-gray-800" onClick={()=>toPDF()}>Print</button>
+                        <button disabled={today && nextDay} className="bg-red-800 px-2 rounded hover:bg-red-500 mt-1 font-bold text-white p-2" onClick={()=>deleteBookingList(item._id)}>X</button>
+                        <button className="bg-gray-500 px-2 rounded mt-1 font-bold text-white p-2 t-4" onClick={()=>toPDF()}>Print</button>
                     </div>
                 </div>
             </div>

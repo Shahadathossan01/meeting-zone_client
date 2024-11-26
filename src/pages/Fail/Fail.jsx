@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
 
 
 const Fail = () => {
     return (
-        <>
-            <h1>Fail page</h1>
-        </>
+        <div className='text-center pt-10'>
+            <h1 className='text-3xl font-bold'>Unfortunately, Failed Your Booking Process.</h1>
+            <h1 className='pt-4 text-lg'>Please Try Again.. Go <Link className='text-blue-500' to="/">Home <span aria-hidden="true">&rarr;</span></Link></h1>
+        </div>
     );
 };
 
