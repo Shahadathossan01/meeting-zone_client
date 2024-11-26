@@ -17,6 +17,10 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const {user}=useStoreState(store=>store.user)
   const {logoutUser}=useStoreActions(action=>action.user)
+  const handleLogout=()=>{
+    logoutUser()
+    setMobileMenuOpen(false)
+  }
 
   return (
     <div>
@@ -70,7 +74,7 @@ export default function Navbar() {
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
             <Link to="/">
-            <h1 className="-m-1.5 p-1.5">
+            <h1 onClick={() => setMobileMenuOpen(false)} className="-m-1.5 p-1.5">
               Meeting Zone
             </h1>
             </Link>
@@ -87,7 +91,7 @@ export default function Navbar() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <Link key={item.name} to={item.route} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
+                    <Link onClick={() => setMobileMenuOpen(false)} key={item.name} to={item.route} className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">
                     {item.name}
                   </Link>
                   ))}
@@ -100,10 +104,10 @@ export default function Navbar() {
             }
           
             {
-              user?<Link onClick={()=>logoutUser()} to="/login" className="text-sm/6 font-semibold text-gray-900">
+              user?<Link onClick={handleLogout} to="/login" className="text-sm/6 font-semibold text-gray-900">
               Logout <span aria-hidden="true">&rarr;</span>
             </Link>:
-            <Link to="/login" className="text-sm/6 font-semibold text-gray-900">
+            <Link onClick={() => setMobileMenuOpen(false)} to="/login" className="text-sm/6 font-semibold text-gray-900">
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>
             }
